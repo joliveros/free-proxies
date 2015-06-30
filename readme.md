@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joliveros/free-proxies.svg?branch=master)](https://travis-ci.org/joliveros/free-proxies)
+
 ## Usage
 ```js
 import Proxies from 'free-proxies'

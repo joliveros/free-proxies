@@ -1,6 +1,16 @@
+sudo: true
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
-  - "iojs" 
+- '0.12'
+# - '0.11'
+# - '0.10'
+# - iojs
+deploy:
+  provider: npm
+  email: jose.oliveros.1983@gmail.com
+  api_key:
+    secure: vP62qPJJ3yw9qHvngvgj7pMP2Iv0ZDesoEQJXflc+R/6w5IgpW9id9K80Ulx0Y+IMHHFLn2kFLafkdtQb3UmXAtjnMXX50YLxtYHglhAHYlbGOGgPu6bwqaEchtHMtrzZTwmhiWcsbtb7S1JoL/FGnv+36edDpm1mwRqX6cyxmQUkU8nKVAxbuxsbhvUc5R0+k1+pUAw43YkEahxL1BMOnev0t5sqCxFUeWEWlbx9fxQ7yVT00MoEYad2A+f7YG3/HeReKOvCQaIDmochmStJZfqzyzxyIUjoOct/WCOcwI3Zx4Mdckw4c5B0NexbKhM8Go6KsydbkEfs9SEBNIdQfA8fwDFWHK6S8MCiUnqCFpk5X1vAkll+L6as12s4v1hm7chyNeSuuiXUa8JVBvpmxclb+w5k2Mh18oJcWKGJdA8XWhG/D+GhV0sF4MReoUISHyXAp1MXGn6WT+dk5FiorP/xEkSoHg4LqieS2k8rt1aRUNUjRoy0q4FCsKoPcUi8k7wEVabS9VSF73YjqfHr1TwTZtJcL3nAa8s0ZQTtkNmmmeOTzo6zBc3u2NLW8PxxbFgpka4SmsbqRhPIFf/+hSZd1RcYMTLrS/W9z+QQz07zt9GaNLUYBW7WUJgarGPWweIBz2XaZPaM3YsUxg2JyaSC/GIWPIuU+jmmEBGIeM=
+  on:
+    tags: true
+    repo: joliveros/free-proxies
+    branch: master
