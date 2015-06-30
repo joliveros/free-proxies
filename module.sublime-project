@@ -1,0 +1,22 @@
+{
+  "folders":
+  [
+    {
+      "folder_exclude_patterns": [
+      "log"
+      , ".tmp"
+      , "node_modules"
+      , "build"
+      , ".sass-cache"
+      , "dist"
+      ],
+      "file_exclude_patterns": [
+      "*.sublime-workspace"
+      , "*.css"
+      , "*.css.map"
+      ],
+      "follow_symlinks": true,
+      "path": "."
+    }
+  ]
+}
