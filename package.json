@@ -1,6 +1,6 @@
 {
   "name": "free-proxies",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "dist/Proxies.js",
   "repository": "git+ssh://git@github.com:joliveros/free-proxies.git",
   "dependencies": {
@@ -15,7 +15,7 @@
     "superagent": "^1.2.0",
     "superagent-proxy": "^0.3.2",
     "validate-ip": "^1.0.1",
-    "co-phantom":"git+ssh://git@github.com:kolodny/co-phantom.git"
+    "co-phantom": "git+ssh://git@github.com:kolodny/co-phantom.git"
   },
   "devDependencies": {
     "chai": "^2.1.1",
