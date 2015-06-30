@@ -1,6 +1,6 @@
 {
   "name": "free-proxies",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "dist/Proxies.js",
   "repository": "git+ssh://git@github.com:joliveros/free-proxies.git",
   "dependencies": {
