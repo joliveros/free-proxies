@@ -65,7 +65,7 @@ export default class Proxies {
       , a: options.anonlevel||[0, 1, 2]
     }
     let url = `${freeUrl}?${qs.stringify(opts)}`
-    // debug(url)
+    debug(url)
     let html = yield this.getHtml(url)
     let $ = cheerio.load(html)
     // debug(html)
@@ -103,7 +103,7 @@ export default class Proxies {
   }
   *getRandomProxy(){
     let proxies = yield this._getProxies()
-    if(!proxies){
+    if(proxies.length==0){
       yield this.getAllProxies()
     }
     proxies = yield this._getProxies()

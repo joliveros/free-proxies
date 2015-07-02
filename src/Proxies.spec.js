@@ -16,18 +16,20 @@ describe('#getHtml',function(){
   this.timeout(ms('15s'))
   it('should return html', function*(){
     let html = yield module.getHtml('http://www.freeproxylists.net')
+    // debug(html)
     expect(html).to.match(/\<div/)
   })
 })
 describe('#getfreeproxylist',function(){
   this.timeout(ms('15s'))
   it('should return urls', function*(){
-    let res = module.getfreeproxylist()
+    let res = yield module.getfreeproxylist()
+    debug(res)
     expect(res).to.be.array
     expect(_.first(res)).to.match(/http\:\/\//)
   })
 })
-describe.only('#getRandomProxy',function(){
+describe('#getRandomProxy',function(){
   this.timeout(ms('20s'))
   it('should return urls', function*(){
     let res = yield module.getRandomProxy()
