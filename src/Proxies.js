@@ -7,9 +7,17 @@ import qs from 'qs'
 import ms from 'ms'
 import validateip from 'validate-ip'
 import phantom from 'co-phantom'
+import Redis from 'redis'
+import coredis from 'co-redis'
+import foreach from 'generator-foreach'
+
+let redis = coredis(Redis.createClient())
+
+const keyprefix = 'proxy'
 const debug = Debug('proxies')
 const freeUrl = 'http://www.freeproxylists.net/'
-export default class Watcher {
+const usproxiesUrl = 'http://www.us-proxy.org/'
+export default class Proxies {
   constructor(){
   }
   *init(){
@@ -27,6 +35,27 @@ export default class Watcher {
     })
     return html
   }
+  *getUSProxies(){
+    let html = yield this.getHtml(usproxiesUrl)
+    let $ = cheerio.load(html)
+    let rows = $('#proxylisttable tr').toArray()
+    rows = _.map(rows, row=>{
+      row = $(row)
+      let tds = row.find('td').toArray()
+      tds = _.map(tds, td=>{
+        if(!td)return;
+        return $(td).html()
+      })
+      let [ip, port, country, anonymity, google, https, last] = tds
+      if(!ip)return;
+      row = `${https=='yes'?'https':'http'}://${ip}:${port}`
+      return row
+    })
+    rows = _.filter(rows, row=>{
+      return !_.isUndefined(row)
+    })
+    return rows
+  }
   *getfreeproxylist(options){
     options = options || {}
     let opts = {
@@ -36,9 +65,10 @@ export default class Watcher {
       , a: options.anonlevel||[0, 1, 2]
     }
     let url = `${freeUrl}?${qs.stringify(opts)}`
-    debug(url)
+    // debug(url)
     let html = yield this.getHtml(url)
     let $ = cheerio.load(html)
+    // debug(html)
     let rows = $('.DataGrid tr').toArray()
     // debug(rows)
     let ips = _.map(rows, a=>{
@@ -61,9 +91,37 @@ export default class Watcher {
     })
     return ips
   }
+  *getAllProxies(){
+    let proxies = yield this.getfreeproxylist()
+    let usproxies = yield this.getUSProxies()
+    proxies = proxies.concat(usproxies)
+    debug(proxies)
+    return yield this.saveProxies(proxies)
+  }
+  *_getProxies(){
+    return yield redis.keys(`${keyprefix}:\*`)
+  }
   *getRandomProxy(){
-    if(!this.proxies)
-    this.proxies = yield this.getfreeproxylist()
-    return _.sample(this.proxies)
+    let proxies = yield this._getProxies()
+    if(!proxies){
+      yield this.getAllProxies()
+    }
+    proxies = yield this._getProxies()
+    return _.sample(proxies)
+  }
+  *removeProxy(key){
+    yield redis.del(key)
+  }
+  *saveProxies(proxies){
+    if(!_.isArray(proxies)) throw new Error('requires array of proxies.')
+    // debug(proxies)
+    let keys = []
+    yield foreach(proxies, function*(proxy){
+      // proxy:http://0.0.0.0:9090
+      let key = `${keyprefix}:${proxy}`
+      yield redis.set(key, '')
+      keys.push(key)
+    })
+    return keys
   }
 } 

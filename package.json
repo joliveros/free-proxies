@@ -7,15 +7,17 @@
     "babel": "^5.5.6",
     "cheerio": "^0.19.0",
     "co": "^4.5.4",
+    "co-phantom": "https://github.com/kolodny/co-phantom.git",
+    "co-redis": "^1.2.1",
     "debug": "^2.2.0",
     "generator-foreach": "^0.1.0",
     "lodash": "^3.9.3",
     "ms": "^0.7.1",
     "qs": "^3.1.0",
+    "redis": "^0.12.1",
     "superagent": "^1.2.0",
     "superagent-proxy": "^0.3.2",
-    "validate-ip": "^1.0.1",
-    "co-phantom": "https://github.com/kolodny/co-phantom.git"
+    "validate-ip": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^2.1.1",
