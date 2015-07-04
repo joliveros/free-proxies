@@ -12,7 +12,7 @@ import coredis from 'co-redis'
 import foreach from 'generator-foreach'
 
 let redis = coredis(Redis.createClient())
-
+const proxyReg = /^proxy\:(.+)/
 const keyprefix = 'proxy'
 const debug = Debug('proxies')
 const freeUrl = 'http://www.freeproxylists.net/'
@@ -99,7 +99,11 @@ export default class Proxies {
     return yield this.saveProxies(proxies)
   }
   *_getProxies(){
-    return yield redis.keys(`${keyprefix}:\*`)
+    let proxies =  yield redis.keys(`${keyprefix}:\*`)
+    proxies = _.map(proxies, p=>{
+      return p.match(proxyReg)[1]
+    })
+    return proxies
   }
   *getRandomProxy(){
     let proxies = yield this._getProxies()
