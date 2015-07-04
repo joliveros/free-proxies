@@ -34,7 +34,7 @@ describe('#_getProxies',function(){
   it('should return urls', function*(){
     let res = yield module._getProxies()
     debug(res)
-    expect(res).to.match(/http\:\/\//)
+    expect(_.first(res)).to.match(/http\:\/\//)
   })
 })
 describe('#getRandomProxy',function(){
