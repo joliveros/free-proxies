@@ -29,12 +29,13 @@ describe('#getfreeproxylist',function(){
     expect(_.first(res)).to.match(/http\:\/\//)
   })
 })
-describe('#_getProxies',function(){
+describe.only('#_getProxies',function(){
   this.timeout(ms('20s'))
   it('should return urls', function*(){
+    yield module.getAllProxies()
     let res = yield module._getProxies()
     debug(res)
-    expect(res).to.match(/http\:\/\//)
+    expect(_.first(res)).to.match(/http\:\/\//)
   })
 })
 describe('#getRandomProxy',function(){
