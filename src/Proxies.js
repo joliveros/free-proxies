@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import request from 'superagent'
 import proxy from 'superagent-proxy'
 import Debug from 'debug'
@@ -128,4 +129,4 @@ export default class Proxies {
     })
     return keys
   }
-} 
+}
