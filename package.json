@@ -5,18 +5,15 @@
   "repository": "git+ssh://git@github.com:joliveros/free-proxies.git",
   "dependencies": {
     "cheerio": "^0.20.0",
-    "co": "^4.6.0",
-    "co-phantom": "https://github.com/kolodny/co-phantom.git",
     "co-redis": "^2.0.0",
+    "co": "^4.6.0",
     "debug": "^2.2.0",
-    "generator-foreach": "^0.1.0",
     "lodash": "^4.5.1",
     "ms": "^0.7.1",
+    "node-phantom-promise": "^1.0.3",
     "phantomjs": "^2.1.3",
     "qs": "^6.1.0",
     "redis": "^2.4.2",
-    "superagent": "^1.8.0-beta.2",
-    "superagent-proxy": "^1.0.0",
     "validate-ip": "^1.0.1"
   },
   "devDependencies": {
@@ -28,13 +25,11 @@
     "babel-register": "^6.5.2",
     "chai": "^3.5.0",
     "co-mocha": "^1.1.2",
-    "jshint": "^2.9.1",
-    "jshint-stylish": "^2.1.0",
     "mocha": "^2.4.5",
     "should": "^8.2.2"
   },
   "engines": {
-    "node": ">=0.10.37"
+    "node": ">=5.0.0"
   },
   "scripts": {
     "build": "babel src -d dist",

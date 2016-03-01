@@ -1,17 +1,13 @@
 import 'babel-polyfill'
-import request from 'superagent'
-import proxy from 'superagent-proxy'
 import Debug from 'debug'
 import cheerio from 'cheerio'
 import _ from 'lodash'
 import qs from 'qs'
-import ms from 'ms'
 import validateip from 'validate-ip'
 import driver from 'node-phantom-promise'
 import phantomjs from 'phantomjs'
 import Redis from 'redis'
 import coredis from 'co-redis'
-import foreach from 'generator-foreach'
 let {
   path
 } = phantomjs
