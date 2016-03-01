@@ -4,7 +4,7 @@ import _ from 'lodash'
 import Debug from 'debug'
 import ms from 'ms'
 import foreach from 'generator-foreach'
-let _proxies = [ 
+let _proxies = [
   'http://108.61.200.66:8080'
   , 'http://65.79.168.42:80'
   , 'http://208.53.164.114:80'
@@ -12,7 +12,7 @@ let _proxies = [
 ]
 let debug = Debug('test')
 let module = new Module()
-describe('#getHtml',function(){
+describe.only('#getHtml',function(){
   this.timeout(ms('15s'))
   it('should return html', function*(){
     let html = yield module.getHtml('http://www.freeproxylists.net')
@@ -29,7 +29,7 @@ describe('#getfreeproxylist',function(){
     expect(_.first(res)).to.match(/http\:\/\//)
   })
 })
-describe.only('#_getProxies',function(){
+describe('#_getProxies',function(){
   this.timeout(ms('20s'))
   it('should return urls', function*(){
     yield module.getAllProxies()
