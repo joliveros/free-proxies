@@ -12,11 +12,11 @@ let _proxies = [
 ]
 let debug = Debug('test')
 let module = new Module()
-describe.only('#getHtml',function(){
+describe('#getHtml',function(){
   this.timeout(ms('15s'))
   it('should return html', function*(){
     let html = yield module.getHtml('http://www.freeproxylists.net')
-    // debug(html)
+    debug(html)
     expect(html).to.match(/\<div/)
   })
 })
