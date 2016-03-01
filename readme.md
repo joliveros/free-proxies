@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/joliveros/free-proxies.svg?branch=master)](https://travis-ci.org/joliveros/free-proxies)
+free-proxies [![Build Status](https://travis-ci.org/joliveros/free-proxies.svg?branch=master)](https://travis-ci.org/joliveros/free-proxies)
 
 ## Usage
 ```js
