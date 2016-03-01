@@ -38,10 +38,6 @@
   },
   "scripts": {
     "build": "babel src -d dist",
-    "install": "npm run build",
-    "test": "npm run test-mocha",
-    "test-mocha": "NODE_ENV=test DEBUG=proxies,test node_modules/.bin/mocha --require co-mocha ./src/**/*spec.js --compilers js:babel-register",
-    "test-watch": "NODE_ENV=test DEBUG=proxies,test mocha --watch --require co-mocha --harmony-generators ./src/**/*spec.js --compilers js:babel/register",
-    "test-watch-debug": "NODE_ENV=test DEBUG=proxies,test mocha -d --watch --require co-mocha --harmony-generators ./src/**/*spec.js --compilers js:babel/register"
+    "test": "NODE_ENV=test DEBUG=proxies,test node_modules/.bin/mocha --require co-mocha ./src/**/*spec.js --compilers js:babel-register"
   }
 }
