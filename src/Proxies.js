@@ -44,7 +44,7 @@ export default class Proxies {
         if(!td)return;
         return $(td).html()
       })
-      let [ip, port, country, anonymity, google, https, last] = tds
+      let [ip, port, country, anonymity, google, https, last] = tds // eslint-disable-line no-unused-vars
       if(!ip)return;
       row = `${https=='yes'?'https':'http'}://${ip}:${port}`
       return row

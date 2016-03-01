@@ -3,7 +3,6 @@ import Module from './Proxies.js'
 import _ from 'lodash'
 import Debug from 'debug'
 import ms from 'ms'
-import foreach from 'generator-foreach'
 let _proxies = [
   'http://108.61.200.66:8080'
   , 'http://65.79.168.42:80'
@@ -56,12 +55,10 @@ describe('#saveProxies',function(){
 })
 describe('#removeProxy',function(){
   this.timeout(ms('15s'))
-  it('should remove proxy from redis', function*(){
+  it('should remove proxy from redis', async function(){
     let proxies = _proxies
-    let keys = yield module.saveProxies(proxies)
-    yield* foreach(keys, function*(key){
-      yield* module.removeProxy(key)
-    })
+    let keys = await module.saveProxies(proxies)
+    keys.forEach((key) => module.removeProxy(key))
   })
 })
 describe('#getUSProxies',function(){
