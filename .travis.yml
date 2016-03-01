@@ -1,10 +1,7 @@
-sudo: true
+sudo: false
 language: node_js
 node_js:
-- '0.12'
-# - '0.11'
-# - '0.10'
-# - iojs
+- '5.7.0'
 deploy:
   provider: npm
   email: jose.oliveros.1983@gmail.com
